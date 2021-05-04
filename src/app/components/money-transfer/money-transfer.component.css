@@ -1,0 +1,19 @@
+.makeTransfer {
+  width: 30%;
+  background: #ffffff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.transfer{
+ background-color: #02a1e0;
+ border-top-left-radius: 12px;
+ border-top-right-radius: 12px;
+ color: #fff;
+ padding: 15px;
+}
+
+.submit {
+  background: #ec6f31;
+  color: #ffffff;
+}

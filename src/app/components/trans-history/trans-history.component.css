@@ -1,0 +1,22 @@
+.transActions {
+  background-color: #02a1e0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color: #fff;
+  padding: 15px;
+  margin-top: 4%;
+}
+
+.history {
+  background-color: #fff;
+  /* height: 60px; */
+}
+
+.search {
+  border-radius: 0 !important;
+}
+
+.colorPipe{
+  height: 80px;
+  width: 10px;
+}
