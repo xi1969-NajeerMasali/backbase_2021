@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TransHistoryComponent } from './components/trans-history/trans-history.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import * as $ from 'jquery';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HeaderComponent,
     FooterComponent,
     MoneyTransferComponent,
-    TransHistoryComponent
+    TransHistoryComponent,
+    // Helpers
   ],
   imports: [
     BrowserModule,

@@ -1,29 +1,71 @@
-
 <div class="container" style="margin-top: 10%;">
   <form class="makeTransfer" [formGroup]="accountForm" (ngSubmit)="accountInfo()">
     <div class="transfer">
-     <span style="margin-left: 10px;"><b>Make</b></span> Transfer
+      <span style="margin-left: 10px;"><b>Make</b></span> Transfer
     </div>
     <div class="form-group p-3 pb-5">
       <div class="form-group">
         <label>From Account</label>
-        <input type="account" class="form-control" placeholder="My Personal Account: $5824.76">
+        <input type="account" class="form-control" formControlName="pAccount" disabled>
       </div>
       <div class="form-group">
         <label>To Account</label>
-        <input type="toAccount" class="form-control" placeholder="type an account name" formControlName="toAccount">
+        <input type="toAccount" class="form-control" placeholder="type an account name" formControlName="toAccount"
+          [ngClass]="{ 'is-invalid': submitted && f.toAccount.errors }">
+        <div *ngIf="submitted && f.toAccount.errors" class="invalid-feedback">
+          <div *ngIf="f.toAccount.errors.required">This field is required</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Amount</label>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
-            <div class="input-group-text">$</div>
+            <div class="input-group-text"><span><i class="fa fa-eur" aria-hidden="true"></i></span></div>
           </div>
-          <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Specify the amount" formControlName="amount" min=0>
+          <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Specify the amount"
+            formControlName="amount" min=0  [ngClass]="{ 'is-invalid': submitted && f.amount.errors }">
+            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+              <div *ngIf="f.amount.errors.required">There is not enough balance</div>
+            </div>
         </div>
       </div>
       <button type="submit" class="btn btn-warning submit pull-right">Submit</button>
     </div>
   </form>
   <div><button type="submit" class="btn btn-primary" (click)="goToHistory()">Transactions History</button></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><b>Review</b> Transfer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Are you ready to send out this transfer?</label>
+        </div>
+        <div class="form-group">
+          <label><b>It will be send to account:</b></label>
+        </div>
+        <div class="form-group">
+          <label>{{formData && formData.toAccount}}</label>
+        </div>
+        <div class="form-group">
+          <label><b>With the amount of:</b></label>
+        </div>
+        <div class="form-group">
+          <label><span><i class="fa fa-eur" aria-hidden="true"></i> {{formData && formData.amount}}</span></label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary send-transfer">Send Transfer</button>
+      </div>
+    </div>
+  </div>
 </div>
